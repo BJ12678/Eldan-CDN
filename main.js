@@ -1246,7 +1246,6 @@
       data() {
         return {
           search_value: '',
-          // add customer form
           add_form: {
             id: '',
             name: '',
@@ -1281,7 +1280,6 @@
           'deleteCustomerAction'
         ]),
 
-        // add customer section
         addNewCust() {
           this.addCustomerAction({
             id: Math.random().toString(36).substring(2),
@@ -4593,21 +4591,21 @@
             .length
       },
       actions: {
-        async getCustomersAction({ commit }) {
-          await customerApi
-            .fetchCust()
-            .then((res) => commit('GET_CUSTOMERS', res.data));
-        },
+        // async getCustomersAction({ commit }) {
+        //   await customerApi
+        //     .fetchCust()
+        //     .then((res) => commit('GET_CUSTOMERS', res.data));
+        // },
         addCustomerAction({ commit }, payload) {
-          customerApi.addCust(payload)
+          // customerApi.addCust(payload)
           commit('ADD_CUSTOMER', payload);
         },
         updateCustomerAction({ commit }, payload) {
-          customerApi.updateCust(payload)
+          // customerApi.updateCust(payload)
           commit('UPDATE_CUSTOMER', payload);
         },
         deleteCustomerAction({ commit }, payload) {
-          customerApi.deleteCust(payload)
+          // customerApi.deleteCust(payload)
           commit('DELETE_CUSTOMER', payload);
         }
       },
