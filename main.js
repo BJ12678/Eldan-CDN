@@ -4954,14 +4954,14 @@
       }
     };
 
-    const HTTP = axios.create({
+    /* const HTTP = axios.create({
       baseURL: `http://localhost:3333/api`,
       withCredentials: false,
       headers: {
         Accept: 'application/json',
         'Content-Type': 'application/json'
       }
-    });
+    }); */
     const customerApi = {
       fetchCust() {
         return HTTP.get(`/customers`, {
