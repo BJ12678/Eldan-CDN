@@ -4607,21 +4607,13 @@
             .length
       },
       actions: {
-        async getCustomersAction({ commit }) {
-          await customerApi
-            .fetchCust()
-            .then((res) => commit('GET_CUSTOMERS', res.data));
-        },
         addCustomerAction({ commit }, payload) {
-          customerApi.addCust(payload)
           commit('ADD_CUSTOMER', payload);
         },
         updateCustomerAction({ commit }, payload) {
-          customerApi.updateCust(payload)
           commit('UPDATE_CUSTOMER', payload);
         },
         deleteCustomerAction({ commit }, payload) {
-          customerApi.deleteCust(payload)
           commit('DELETE_CUSTOMER', payload);
         }
       },
@@ -4785,24 +4777,15 @@
             }, 0)
       },
       actions: {
-        async getSalesAction({ commit }) {
-          await saleApi
-            .fetchSales()
-            .then((res) => commit('GET_SALES', res.data));
-        },
-
         addSaleAction({ commit }, payload) {
-          saleApi.addSale(payload)
           commit('ADD_SALE', payload);
         },
 
         updateSaleAction({ commit }, payload) {
-          saleApi.updateSale(payload)
           commit('UPDATE_SALE', payload);
         },
 
         deleteSaleAction({ commit }, payload) {
-          saleApi.deleteSale(payload)
           commit('DELETE_SALE', payload);
         }
       },
@@ -4910,28 +4893,16 @@
         }
       },
       actions: {
-        async getExpensesAction({ commit }) {
-          await expensesApi
-            .fetchMaintenance()
-            .then((res) => commit('GET_ITEMS', res.data));
-        },
-
         addItemAction({ commit }, payload) {
-          expensesApi
-            .addMaintenance(payload)
-            .then((res) => commit('ADD_ITEM', res.data));
+          commit('ADD_ITEM', payload);
         },
 
         updateItemAction({ commit }, payload) {
-          expensesApi
-            .updateMaintenance(payload)
-            .then((res) => commit('UPDATE_ITEM', res.data));
+          commit('UPDATE_ITEM', payload);
         },
 
         deleteItemAction({ commit }, payload) {
-          expensesApi
-            .deleteMaintenance(payload)
-            .then((res) => commit('DELETE_ITEM', res.data));
+          commit('DELETE_ITEM', payload);
         }
       },
       mutations: {
@@ -4965,176 +4936,6 @@
           store.state.selected_id = null;
         }
       }
-    };
-
-    const HTTP = axios.create({
-      baseURL: `http://localhost:3333/api`,
-      withCredentials: false,
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json'
-      }
-    });
-    const customerApi = {
-      fetchCust() {
-        return HTTP.get(`/customers`, {
-          headers: {
-            Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjEsImlhdCI6MTY2OTI5NDY0MH0.8DOGMll8Eq5RG0DbQAvd3xKlVYmvYNxxYSOExcUxuYQ`
-          }
-        });
-      }, // get all customers
-
-      addCust(data) {
-        return HTTP.post(
-          `/customers`,
-          {
-            name: data.name,
-            area: data.area,
-            seller: data.seller,
-            contact: data.contact,
-            remarks: data.remarks
-          },
-          {
-            headers: {
-              Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjEsImlhdCI6MTY2OTI5NDY0MH0.8DOGMll8Eq5RG0DbQAvd3xKlVYmvYNxxYSOExcUxuYQ`
-            }
-          }
-        );
-      }, // add new customer
-
-      updateCust(data) {
-        return HTTP.put(
-          `/customers/${data.id}`,
-          {
-            name: data.name,
-            area: data.area,
-            seller: data.seller,
-            contact: data.contact,
-            remarks: data.remarks
-          },
-          {
-            headers: {
-              Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjEsImlhdCI6MTY2OTI5NDY0MH0.8DOGMll8Eq5RG0DbQAvd3xKlVYmvYNxxYSOExcUxuYQ`
-            }
-          }
-        );
-      }, // update customer
-
-      deleteCust(data) {
-        return HTTP.delete(`/customers/${data.id}`, {
-          headers: {
-            Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjEsImlhdCI6MTY2OTI5NDY0MH0.8DOGMll8Eq5RG0DbQAvd3xKlVYmvYNxxYSOExcUxuYQ`
-          }
-        });
-      } // delete customer
-    };
-
-    const saleApi = {
-      fetchSales() {
-        return HTTP.get(`/sales`, {
-          headers: {
-            Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjEsImlhdCI6MTY2OTI5NDY0MH0.8DOGMll8Eq5RG0DbQAvd3xKlVYmvYNxxYSOExcUxuYQ`
-          }
-        });
-      }, // get all sales
-
-      addSale(data) {
-        return HTTP.post(
-          `/sales`,
-          {
-            date: data.date,
-            customer: data.customer,
-            seller: data.seller,
-            item: data.item,
-            payments: data.payments,
-            remarks: data.remarks
-          },
-          {
-            headers: {
-              Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjEsImlhdCI6MTY2OTI5NDY0MH0.8DOGMll8Eq5RG0DbQAvd3xKlVYmvYNxxYSOExcUxuYQ`
-            }
-          }
-        );
-      }, // add new sale
-
-      updateSale(data) {
-        return HTTP.put(
-          `/sales/${data.id}`,
-          {
-            date: data.date,
-            customer: data.customer,
-            seller: data.seller,
-            item: data.item,
-            payments: data.payments,
-            remarks: data.remarks
-          },
-          {
-            headers: {
-              Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjEsImlhdCI6MTY2OTI5NDY0MH0.8DOGMll8Eq5RG0DbQAvd3xKlVYmvYNxxYSOExcUxuYQ`
-            }
-          }
-        );
-      }, // update sale
-
-      deleteSale(data) {
-        return HTTP.delete(`/sales/${data.id}`, {
-          headers: {
-            Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjEsImlhdCI6MTY2OTI5NDY0MH0.8DOGMll8Eq5RG0DbQAvd3xKlVYmvYNxxYSOExcUxuYQ`
-          }
-        });
-      } // delete sale
-    };
-
-    const expensesApi = {
-      fetchMaintenance() {
-        return HTTP.get(`/maintenance`, {
-          headers: {
-            Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjEsImlhdCI6MTY2OTI5NDY0MH0.8DOGMll8Eq5RG0DbQAvd3xKlVYmvYNxxYSOExcUxuYQ`
-          }
-        });
-      }, // get all items
-
-      addMaintenance(data) {
-        return HTTP.post(
-          `/maintenance`,
-          {
-            date: data.date,
-            employee: data.employee,
-            remarks: data.remarks,
-            amount: data.amount
-          },
-          {
-            headers: {
-              Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjEsImlhdCI6MTY2OTI5NDY0MH0.8DOGMll8Eq5RG0DbQAvd3xKlVYmvYNxxYSOExcUxuYQ`
-            }
-          }
-        );
-      }, // add new item
-
-      updateMaintenance(data) {
-        return HTTP.put(
-          `/maintenance/${data.id}`,
-          {
-            date: data.date,
-            employee: data.employee,
-            remarks: data.remarks,
-            amount: data.amount
-          },
-          {
-            headers: {
-              Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjEsImlhdCI6MTY2OTI5NDY0MH0.8DOGMll8Eq5RG0DbQAvd3xKlVYmvYNxxYSOExcUxuYQ`
-            }
-          }
-        );
-      }, // update selected
-
-      deleteMaintenance(data) {
-        return HTTP.delete(`/maintenance/${data.id}`, {
-          headers: {
-            Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjEsImlhdCI6MTY2OTI5NDY0MH0.8DOGMll8Eq5RG0DbQAvd3xKlVYmvYNxxYSOExcUxuYQ`
-          }
-        });
-      } // delete selected item
     };
 
     var store = new Vuex.Store({
@@ -5216,11 +5017,6 @@
     var app = new Vue({
       el: '#app',
       store,
-      created() {
-        this.getCustomersAction();
-        this.getSalesAction();
-        this.getExpensesAction();
-      },
 
       data() {
         return {
@@ -5233,9 +5029,4 @@
           return 'tab-' + this.currentTab.toLowerCase();
         }
       },
-      methods: {
-        ...Vuex.mapActions('customersModule', ['getCustomersAction']),
-        ...Vuex.mapActions('salesModule', ['getSalesAction']),
-        ...Vuex.mapActions('expensesModule', ['getExpensesAction'])
-      }
     });
