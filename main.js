@@ -4618,9 +4618,6 @@
         }
       },
       mutations: {
-        GET_CUSTOMERS: (state, payload) => {
-          state.customers = payload;
-        },
         ADD_CUSTOMER: (state, payload) => {
           state.customers.push(payload);
           store.state.show_add_form = false;
@@ -4790,10 +4787,6 @@
         }
       },
       mutations: {
-        GET_SALES: (state, payload) => {
-          state.sales = payload;
-        },
-
         ADD_SALE: (state, payload) => {
           state.sales.push(payload);
           store.state.show_add_form = false;
@@ -4906,9 +4899,6 @@
         }
       },
       mutations: {
-        GET_ITEMS: (state, payload) => {
-          state.items = payload;
-        },
         ADD_ITEM: (state, payload) => {
           state.items.push(payload);
           store.state.show_add_form = false;
