@@ -4591,21 +4591,21 @@
             .length
       },
       actions: {
-        // async getCustomersAction({ commit }) {
-        //   await customerApi
-        //     .fetchCust()
-        //     .then((res) => commit('GET_CUSTOMERS', res.data));
-        // },
+        async getCustomersAction({ commit }) {
+          await customerApi
+            .fetchCust()
+            .then((res) => commit('GET_CUSTOMERS', res.data));
+        },
         addCustomerAction({ commit }, payload) {
-          // customerApi.addCust(payload)
+          customerApi.addCust(payload)
           commit('ADD_CUSTOMER', payload);
         },
         updateCustomerAction({ commit }, payload) {
-          // customerApi.updateCust(payload)
+          customerApi.updateCust(payload)
           commit('UPDATE_CUSTOMER', payload);
         },
         deleteCustomerAction({ commit }, payload) {
-          // customerApi.deleteCust(payload)
+          customerApi.deleteCust(payload)
           commit('DELETE_CUSTOMER', payload);
         }
       },
@@ -4954,15 +4954,15 @@
       }
     };
 
-    /* const HTTP = axios.create({
+    const HTTP = axios.create({
       baseURL: `http://localhost:3333/api`,
       withCredentials: false,
       headers: {
         Accept: 'application/json',
         'Content-Type': 'application/json'
       }
-    }); */
-    /* const customerApi = {
+    });
+    const customerApi = {
       fetchCust() {
         return HTTP.get(`/customers`, {
           headers: {
@@ -5014,9 +5014,9 @@
           }
         });
       } // delete customer
-    };  */// export
+    }; // export
 
-    /* const saleApi = {
+    const saleApi = {
       fetchSales() {
         return HTTP.get(`/sales`, {
           headers: {
@@ -5070,9 +5070,9 @@
           }
         });
       } // delete sale
-    };  */// export
+    }; // export
 
-   /*  const expensesApi = {
+    const expensesApi = {
       fetchMaintenance() {
         return HTTP.get(`/maintenance`, {
           headers: {
@@ -5122,7 +5122,7 @@
           }
         });
       } // delete selected item
-    };  */// export
+    }; // export
 
     var store = new Vuex.Store({
       state: {
@@ -5203,11 +5203,11 @@
     var app = new Vue({
       el: '#app',
       store,
-      /* created() {
+      created() {
         this.getCustomersAction();
         this.getSalesAction();
         this.getExpensesAction();
-      }, */
+      },
 
       data() {
         return {
@@ -5220,9 +5220,9 @@
           return 'tab-' + this.currentTab.toLowerCase();
         }
       },
-      /* methods: {
+      methods: {
         ...Vuex.mapActions('customersModule', ['getCustomersAction']),
         ...Vuex.mapActions('salesModule', ['getSalesAction']),
         ...Vuex.mapActions('expensesModule', ['getExpensesAction'])
-      } */
+      }
     });
