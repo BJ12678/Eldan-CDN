@@ -1878,7 +1878,7 @@
           select_year: new Date().getFullYear(),
           // add  form
           add_form: {
-            date: new Date().toISOString().substr(0, 10),
+            date: new Date().toISOString().substring(0, 10),
             employee: 'station',
             remarks: '',
             amount: 0
@@ -1926,7 +1926,16 @@
 
         // add section
         addNewItem() {
-          this.addItemAction(this.add_form);
+          this.addItemAction({
+            date: this.add_form.date,
+            employee: this.add_form.employee,
+            remarks: this.add_form.remarks,
+            amount: this.add_form.amount
+          });
+          this.add_form.date= new Date().toISOString().substring(0, 10),
+          this.add_form.employee= 'station',
+          this.add_form.remarks= '',
+          this.add_form.amount= 0
         },
 
         // update section
