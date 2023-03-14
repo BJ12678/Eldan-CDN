@@ -1588,13 +1588,13 @@
             payments:this.add_form.payments,
             remarks:this.add_form.remarks
           });
-          this.add_form.id = '',
-          this.add_form.date = new Date().toISOString().substring(0, 10),
-          this.add_form.customer = '',
-          this.add_form.seller = 'station',
-          this.add_form.item = 0,
-          this.add_form.payments = 0,
-          this.add_form.remarks = ''
+          this.add_form.id = '';
+          this.add_form.date = new Date().toISOString().substring(0, 10);
+          this.add_form.customer = '';
+          this.add_form.seller = 'station';
+          this.add_form.item = 0;
+          this.add_form.payments = 0;
+          this.add_form.remarks = '';
         },
 
         // update section
