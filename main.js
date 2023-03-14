@@ -5203,11 +5203,11 @@
     var app = new Vue({
       el: '#app',
       store,
-      created() {
+      /* created() {
         this.getCustomersAction();
         this.getSalesAction();
         this.getExpensesAction();
-      },
+      }, */
 
       data() {
         return {
@@ -5220,9 +5220,9 @@
           return 'tab-' + this.currentTab.toLowerCase();
         }
       },
-      methods: {
+      /* methods: {
         ...Vuex.mapActions('customersModule', ['getCustomersAction']),
         ...Vuex.mapActions('salesModule', ['getSalesAction']),
         ...Vuex.mapActions('expensesModule', ['getExpensesAction'])
-      }
+      } */
     });
