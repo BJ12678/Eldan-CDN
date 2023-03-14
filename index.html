@@ -4688,8 +4688,9 @@
             .then((res) => commit('GET_CUSTOMERS', res.data));
         },
         addCustomerAction({ commit }, payload) {
-          customerApi.addCust(payload);
-          commit('ADD_CUSTOMER', payload);
+          customerApi
+            .addCust(payload)
+            .then(commit('ADD_CUSTOMER', payload));
         },
         updateCustomerAction({ commit }, payload) {
           customerApi
