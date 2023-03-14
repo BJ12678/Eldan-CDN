@@ -1,5 +1,5 @@
-    Vue.component('tab-home', {
-      template: `
+Vue.component('tab-home', {
+  template: `
       <div>
         <!-- Page Heading -->
           <div class="row">
@@ -926,177 +926,149 @@
               <!-- /.row -->
             </div>
         `,
-      data() {
-        return {
-          select_month: this.currentMonth(),
-          select_year: new Date().getFullYear()
-        };
-      },
-      computed: {
-        ...Vuex.mapState('salesModule', ['sales']),
-        ...Vuex.mapState('expensesModule', ['items']),
-        ...Vuex.mapGetters('salesModule', [
-          'January',
-          'February',
-          'March',
-          'April',
-          'May',
-          'June',
-          'July',
-          'August',
-          'September',
-          'October',
-          'November',
-          'December'
-        ]),
-        ...Vuex.mapGetters('expensesModule', [
-          'January_',
-          'February_',
-          'March_',
-          'April_',
-          'May_',
-          'June_',
-          'July_',
-          'August_',
-          'September_',
-          'October_',
-          'November_',
-          'December_'
-        ])
-      },
-      methods: {
-        ...Vuex.mapActions('customersModule', ['getCustomersAction']),
-        ...Vuex.mapActions('salesModule', ['getSalesAction']),
-        ...Vuex.mapActions('expensesModule', ['getExpensesAction']),
+  data() {
+    return {
+      select_month: this.currentMonth(),
+      select_year: new Date().getFullYear()
+    };
+  },
+  computed: {
+    ...Vuex.mapState('salesModule', ['sales']),
+    ...Vuex.mapState('expensesModule', ['items']),
+    ...Vuex.mapGetters('salesModule', [
+      'January',
+      'February',
+      'March',
+      'April',
+      'May',
+      'June',
+      'July',
+      'August',
+      'September',
+      'October',
+      'November',
+      'December'
+    ]),
+    ...Vuex.mapGetters('expensesModule', [
+      'January_',
+      'February_',
+      'March_',
+      'April_',
+      'May_',
+      'June_',
+      'July_',
+      'August_',
+      'September_',
+      'October_',
+      'November_',
+      'December_'
+    ])
+  },
+  methods: {
+    ...Vuex.mapActions('customersModule', ['getCustomersAction']),
+    ...Vuex.mapActions('salesModule', ['getSalesAction']),
+    ...Vuex.mapActions('expensesModule', ['getExpensesAction']),
 
-        currentMonth() {
-          const month = [
-            'January',
-            'February',
-            'March',
-            'April',
-            'May',
-            'June',
-            'July',
-            'August',
-            'September',
-            'October',
-            'November',
-            'December'
-          ];
+    currentMonth() {
+      const month = [
+        'January',
+        'February',
+        'March',
+        'April',
+        'May',
+        'June',
+        'July',
+        'August',
+        'September',
+        'October',
+        'November',
+        'December'
+      ];
 
-          const d = new Date();
-          let name = month[d.getMonth()];
-          return name;
-        },
-        selectedMonth() {
-          if (this.select_month === 'January') {
-            return this.January.filter((sale) =>
-              sale.date.match(this.select_year)
-            );
-          } else if (this.select_month === 'February') {
-            return this.February.filter((sale) =>
-              sale.date.match(this.select_year)
-            );
-          } else if (this.select_month === 'March') {
-            return this.March.filter((sale) =>
-              sale.date.match(this.select_year)
-            );
-          } else if (this.select_month === 'April') {
-            return this.April.filter((sale) =>
-              sale.date.match(this.select_year)
-            );
-          } else if (this.select_month === 'May') {
-            return this.May.filter((sale) =>
-              sale.date.match(this.select_year)
-            );
-          } else if (this.select_month === 'June') {
-            return this.June.filter((sale) =>
-              sale.date.match(this.select_year)
-            );
-          } else if (this.select_month === 'July') {
-            return this.July.filter((sale) =>
-              sale.date.match(this.select_year)
-            );
-          } else if (this.select_month === 'August') {
-            return this.August.filter((sale) =>
-              sale.date.match(this.select_year)
-            );
-          } else if (this.select_month === 'September') {
-            return this.September.filter((sale) =>
-              sale.date.match(this.select_year)
-            );
-          } else if (this.select_month === 'October') {
-            return this.October.filter((sale) =>
-              sale.date.match(this.select_year)
-            );
-          } else if (this.select_month === 'November') {
-            return this.November.filter((sale) =>
-              sale.date.match(this.select_year)
-            );
-          } else {
-            return this.December.filter((sale) =>
-              sale.date.match(this.select_year)
-            );
-          }
-        },
-
-        expensesMonth() {
-          if (this.select_month === 'January') {
-            return this.January_.filter((item) =>
-              item.date.match(this.select_year)
-            );
-          } else if (this.select_month === 'February') {
-            return this.February_.filter((item) =>
-              item.date.match(this.select_year)
-            );
-          } else if (this.select_month === 'March') {
-            return this.March_.filter((item) =>
-              item.date.match(this.select_year)
-            );
-          } else if (this.select_month === 'April') {
-            return this.April_.filter((item) =>
-              item.date.match(this.select_year)
-            );
-          } else if (this.select_month === 'May') {
-            return this.May_.filter((item) =>
-              item.date.match(this.select_year)
-            );
-          } else if (this.select_month === 'June') {
-            return this.June_.filter((item) =>
-              item.date.match(this.select_year)
-            );
-          } else if (this.select_month === 'July') {
-            return this.July_.filter((item) =>
-              item.date.match(this.select_year)
-            );
-          } else if (this.select_month === 'August') {
-            return this.August_.filter((item) =>
-              item.date.match(this.select_year)
-            );
-          } else if (this.select_month === 'September') {
-            return this.September_.filter((item) =>
-              item.date.match(this.select_year)
-            );
-          } else if (this.select_month === 'October') {
-            return this.October_.filter((item) =>
-              item.date.match(this.select_year)
-            );
-          } else if (this.select_month === 'November') {
-            return this.November_.filter((item) =>
-              item.date.match(this.select_year)
-            );
-          } else {
-            return this.December_.filter((item) =>
-              item.date.match(this.select_year)
-            );
-          }
-        }
+      const d = new Date();
+      let name = month[d.getMonth()];
+      return name;
+    },
+    selectedMonth() {
+      if (this.select_month === 'January') {
+        return this.January.filter((sale) => sale.date.match(this.select_year));
+      } else if (this.select_month === 'February') {
+        return this.February.filter((sale) =>
+          sale.date.match(this.select_year)
+        );
+      } else if (this.select_month === 'March') {
+        return this.March.filter((sale) => sale.date.match(this.select_year));
+      } else if (this.select_month === 'April') {
+        return this.April.filter((sale) => sale.date.match(this.select_year));
+      } else if (this.select_month === 'May') {
+        return this.May.filter((sale) => sale.date.match(this.select_year));
+      } else if (this.select_month === 'June') {
+        return this.June.filter((sale) => sale.date.match(this.select_year));
+      } else if (this.select_month === 'July') {
+        return this.July.filter((sale) => sale.date.match(this.select_year));
+      } else if (this.select_month === 'August') {
+        return this.August.filter((sale) => sale.date.match(this.select_year));
+      } else if (this.select_month === 'September') {
+        return this.September.filter((sale) =>
+          sale.date.match(this.select_year)
+        );
+      } else if (this.select_month === 'October') {
+        return this.October.filter((sale) => sale.date.match(this.select_year));
+      } else if (this.select_month === 'November') {
+        return this.November.filter((sale) =>
+          sale.date.match(this.select_year)
+        );
+      } else {
+        return this.December.filter((sale) =>
+          sale.date.match(this.select_year)
+        );
       }
-    });
+    },
 
-    Vue.component('tab-customers', {
-      template: `
+    expensesMonth() {
+      if (this.select_month === 'January') {
+        return this.January_.filter((item) =>
+          item.date.match(this.select_year)
+        );
+      } else if (this.select_month === 'February') {
+        return this.February_.filter((item) =>
+          item.date.match(this.select_year)
+        );
+      } else if (this.select_month === 'March') {
+        return this.March_.filter((item) => item.date.match(this.select_year));
+      } else if (this.select_month === 'April') {
+        return this.April_.filter((item) => item.date.match(this.select_year));
+      } else if (this.select_month === 'May') {
+        return this.May_.filter((item) => item.date.match(this.select_year));
+      } else if (this.select_month === 'June') {
+        return this.June_.filter((item) => item.date.match(this.select_year));
+      } else if (this.select_month === 'July') {
+        return this.July_.filter((item) => item.date.match(this.select_year));
+      } else if (this.select_month === 'August') {
+        return this.August_.filter((item) => item.date.match(this.select_year));
+      } else if (this.select_month === 'September') {
+        return this.September_.filter((item) =>
+          item.date.match(this.select_year)
+        );
+      } else if (this.select_month === 'October') {
+        return this.October_.filter((item) =>
+          item.date.match(this.select_year)
+        );
+      } else if (this.select_month === 'November') {
+        return this.November_.filter((item) =>
+          item.date.match(this.select_year)
+        );
+      } else {
+        return this.December_.filter((item) =>
+          item.date.match(this.select_year)
+        );
+      }
+    }
+  }
+});
+
+Vue.component('tab-customers', {
+  template: `
         <div class="row">
           <div class="col-lg-12">
             <h2>Customers</h2>
@@ -1243,89 +1215,89 @@
         </div>
         <!-- /.row -->
 `,
-      data() {
-        return {
-          search_value: '',
-          add_form: {
-            id: '',
-            name: '',
-            area: '',
-            seller: 'station',
-            contact: '',
-            remarks: ''
-          }
-        };
-      },
-      computed: {
-        ...Vuex.mapState('customersModule', ['customers']),
-        ...Vuex.mapState([
-          'selected_id',
-          'show_add_form',
-          'show_update_form',
-          'show_update_icon',
-          'show_delete_button'
-        ])
-      },
-      methods: {
-        ...Vuex.mapActions([
-          'showAddForm',
-          'showUpdateForm',
-          'showUpdateIcon',
-          'showDeleteButton',
-          'cancelButton'
-        ]),
-        ...Vuex.mapActions('customersModule', [
-          'addCustomerAction',
-          'updateCustomerAction',
-          'deleteCustomerAction'
-        ]),
-
-        addNewCust() {
-          this.addCustomerAction({
-            id: Math.random().toString(36).substring(2),
-            name: this.add_form.name,
-            area: this.add_form.area,
-            seller: this.add_form.seller,
-            contact: this.add_form.contact,
-            remarks: this.add_form.remarks
-          });
-          this.add_form.id= '',
-          this.add_form.name= '',
-          this.add_form.area= '',
-          this.add_form.seller= 'station',
-          this.add_form.contact= '',
-          this.add_form.remarks= ''
-        },
-
-        // update customer section
-        updCust(selected_cust) {
-          this.updateCustomerAction({
-            id: selected_cust.id,
-            name: selected_cust.name,
-            area: selected_cust.area,
-            seller: selected_cust.seller,
-            contact: selected_cust.contact,
-            remarks: selected_cust.remarks
-          });
-        },
-
-        searchCustomer() {
-          let findMatch = /([a-z])\w+/gi;
-          findMatch = this.search_value;
-          if (this.search_value != null) {
-            return this.customers.filter(
-              (customer) =>
-                customer.name.match(findMatch) ||
-                customer.area.match(findMatch) ||
-                customer.seller.match(findMatch)
-            );
-          }
-        }
+  data() {
+    return {
+      search_value: '',
+      add_form: {
+        id: '',
+        name: '',
+        area: '',
+        seller: 'station',
+        contact: '',
+        remarks: ''
       }
-    });
+    };
+  },
+  computed: {
+    ...Vuex.mapState('customersModule', ['customers']),
+    ...Vuex.mapState([
+      'selected_id',
+      'show_add_form',
+      'show_update_form',
+      'show_update_icon',
+      'show_delete_button'
+    ])
+  },
+  methods: {
+    ...Vuex.mapActions([
+      'showAddForm',
+      'showUpdateForm',
+      'showUpdateIcon',
+      'showDeleteButton',
+      'cancelButton'
+    ]),
+    ...Vuex.mapActions('customersModule', [
+      'addCustomerAction',
+      'updateCustomerAction',
+      'deleteCustomerAction'
+    ]),
 
-    Vue.component('tab-sales', {
-      template: `
+    addNewCust() {
+      this.addCustomerAction({
+        id: Math.random().toString(36).substring(2),
+        name: this.add_form.name,
+        area: this.add_form.area,
+        seller: this.add_form.seller,
+        contact: this.add_form.contact,
+        remarks: this.add_form.remarks
+      });
+      (this.add_form.id = ''),
+        (this.add_form.name = ''),
+        (this.add_form.area = ''),
+        (this.add_form.seller = 'station'),
+        (this.add_form.contact = ''),
+        (this.add_form.remarks = '');
+    },
+
+    // update customer section
+    updCust(selected_cust) {
+      this.updateCustomerAction({
+        id: selected_cust.id,
+        name: selected_cust.name,
+        area: selected_cust.area,
+        seller: selected_cust.seller,
+        contact: selected_cust.contact,
+        remarks: selected_cust.remarks
+      });
+    },
+
+    searchCustomer() {
+      let findMatch = /([a-z])\w+/gi;
+      findMatch = this.search_value;
+      if (this.search_value != null) {
+        return this.customers.filter(
+          (customer) =>
+            customer.name.match(findMatch) ||
+            customer.area.match(findMatch) ||
+            customer.seller.match(findMatch)
+        );
+      }
+    }
+  }
+});
+
+Vue.component('tab-sales', {
+  template: `
       <div class="row">
                 <div class="col-lg-12">
                   <h2>Sales</h2>
@@ -1523,185 +1495,169 @@
                   </div>
                 </div>
             </div>`,
-      data() {
-        return {
-          search_value: '',
-          select_month: this.currentMonth(),
-          select_year: new Date().getFullYear(),
-          add_form: {
-            id: '',
-            date: new Date().toISOString().substring(0, 10),
-            customer: '',
-            seller: 'station',
-            item: 0,
-            payments: 0,
-            remarks: ''
-          }
-        };
-      },
-      computed: {
-        ...Vuex.mapState([
-          'selected_id',
-          'current_year',
-          'show_add_form',
-          'show_update_form',
-          'show_update_icon',
-          'show_delete_button'
-        ]),
-        ...Vuex.mapGetters('salesModule', [
-          'January',
-          'February',
-          'March',
-          'April',
-          'May',
-          'June',
-          'July',
-          'August',
-          'September',
-          'October',
-          'November',
-          'December'
-        ])
-      },
-      methods: {
-        ...Vuex.mapActions([
-          'showAddForm',
-          'showUpdateForm',
-          'showUpdateIcon',
-          'showDeleteButton',
-          'cancelButton'
-        ]),
-
-        ...Vuex.mapActions('salesModule', [
-          'addSaleAction',
-          'updateSaleAction',
-          'deleteSaleAction'
-        ]),
-        // add section
-        addNewSale() {
-          this.addSaleAction({
-            id: Math.random().toString(36).substring(2),
-            date:this.add_form.date,
-            customer:this.add_form.customer,
-            seller:this.add_form.seller,
-            item:this.add_form.item,
-            payments:this.add_form.payments,
-            remarks:this.add_form.remarks
-          });
-          this.add_form.id = '';
-          this.add_form.date = new Date().toISOString().substring(0, 10);
-          this.add_form.customer = '';
-          this.add_form.seller = 'station';
-          this.add_form.item = 0;
-          this.add_form.payments = 0;
-          this.add_form.remarks = '';
-        },
-
-        // update section
-        updSale(selected_sale) {
-          this.updateSaleAction({
-            id: selected_sale.id,
-            date: selected_sale.date,
-            customer: selected_sale.customer,
-            seller: selected_sale.seller,
-            item: selected_sale.item,
-            payments: selected_sale.payments,
-            remarks: selected_sale.remarks
-          });
-        },
-
-        currentMonth() {
-          const month = [
-            'January',
-            'February',
-            'March',
-            'April',
-            'May',
-            'June',
-            'July',
-            'August',
-            'September',
-            'October',
-            'November',
-            'December'
-          ];
-
-          const d = new Date();
-          let name = month[d.getMonth()];
-          return name;
-        }, //end of currenMonth()
-
-        searchItem() {
-          let findMatch = /([a-z])\w+/gi;
-          findMatch = this.search_value;
-          if (this.search_value != null) {
-            return this.selectedMonth()
-              .filter(
-                (sale) =>
-                  sale.date.match(findMatch) ||
-                  sale.customer.match(findMatch) ||
-                  sale.seller.match(findMatch)
-              )
-              .filter((sale) => sale.date.match(this.select_year));
-          }
-        },
-
-        selectedMonth() {
-          if (this.select_month === 'January') {
-            return this.January.filter((sale) =>
-              sale.date.match(this.select_year)
-            );
-          } else if (this.select_month === 'February') {
-            return this.February.filter((sale) =>
-              sale.date.match(this.select_year)
-            );
-          } else if (this.select_month === 'March') {
-            return this.March.filter((sale) =>
-              sale.date.match(this.select_year)
-            );
-          } else if (this.select_month === 'April') {
-            return this.April.filter((sale) =>
-              sale.date.match(this.select_year)
-            );
-          } else if (this.select_month === 'May') {
-            return this.May.filter((sale) =>
-              sale.date.match(this.select_year)
-            );
-          } else if (this.select_month === 'June') {
-            return this.June.filter((sale) =>
-              sale.date.match(this.select_year)
-            );
-          } else if (this.select_month === 'July') {
-            return this.July.filter((sale) =>
-              sale.date.match(this.select_year)
-            );
-          } else if (this.select_month === 'August') {
-            return this.August.filter((sale) =>
-              sale.date.match(this.select_year)
-            );
-          } else if (this.select_month === 'September') {
-            return this.September.filter((sale) =>
-              sale.date.match(this.select_year)
-            );
-          } else if (this.select_month === 'October') {
-            return this.October.filter((sale) =>
-              sale.date.match(this.select_year)
-            );
-          } else if (this.select_month === 'November') {
-            return this.November.filter((sale) =>
-              sale.date.match(this.select_year)
-            );
-          } else {
-            return this.December.filter((sale) =>
-              sale.date.match(this.select_year)
-            );
-          }
-        } //end of selectedMonth()
+  data() {
+    return {
+      search_value: '',
+      select_month: this.currentMonth(),
+      select_year: new Date().getFullYear(),
+      add_form: {
+        id: '',
+        date: new Date().toISOString().substring(0, 10),
+        customer: '',
+        seller: 'station',
+        item: 0,
+        payments: 0,
+        remarks: ''
       }
-    });
+    };
+  },
+  computed: {
+    ...Vuex.mapState([
+      'selected_id',
+      'current_year',
+      'show_add_form',
+      'show_update_form',
+      'show_update_icon',
+      'show_delete_button'
+    ]),
+    ...Vuex.mapGetters('salesModule', [
+      'January',
+      'February',
+      'March',
+      'April',
+      'May',
+      'June',
+      'July',
+      'August',
+      'September',
+      'October',
+      'November',
+      'December'
+    ])
+  },
+  methods: {
+    ...Vuex.mapActions([
+      'showAddForm',
+      'showUpdateForm',
+      'showUpdateIcon',
+      'showDeleteButton',
+      'cancelButton'
+    ]),
 
-    Vue.component('tab-expenses', {
-      template: `
+    ...Vuex.mapActions('salesModule', [
+      'addSaleAction',
+      'updateSaleAction',
+      'deleteSaleAction'
+    ]),
+    // add section
+    addNewSale() {
+      this.addSaleAction({
+        id: Math.random().toString(36).substring(2),
+        date: this.add_form.date,
+        customer: this.add_form.customer,
+        seller: this.add_form.seller,
+        item: this.add_form.item,
+        payments: this.add_form.payments,
+        remarks: this.add_form.remarks
+      });
+      this.add_form.id = '';
+      this.add_form.date = new Date().toISOString().substring(0, 10);
+      this.add_form.customer = '';
+      this.add_form.seller = 'station';
+      this.add_form.item = 0;
+      this.add_form.payments = 0;
+      this.add_form.remarks = '';
+    },
+
+    // update section
+    updSale(selected_sale) {
+      this.updateSaleAction({
+        id: selected_sale.id,
+        date: selected_sale.date,
+        customer: selected_sale.customer,
+        seller: selected_sale.seller,
+        item: selected_sale.item,
+        payments: selected_sale.payments,
+        remarks: selected_sale.remarks
+      });
+    },
+
+    currentMonth() {
+      const month = [
+        'January',
+        'February',
+        'March',
+        'April',
+        'May',
+        'June',
+        'July',
+        'August',
+        'September',
+        'October',
+        'November',
+        'December'
+      ];
+
+      const d = new Date();
+      let name = month[d.getMonth()];
+      return name;
+    }, //end of currenMonth()
+
+    searchItem() {
+      let findMatch = /([a-z])\w+/gi;
+      findMatch = this.search_value;
+      if (this.search_value != null) {
+        return this.selectedMonth()
+          .filter(
+            (sale) =>
+              sale.date.match(findMatch) ||
+              sale.customer.match(findMatch) ||
+              sale.seller.match(findMatch)
+          )
+          .filter((sale) => sale.date.match(this.select_year));
+      }
+    },
+
+    selectedMonth() {
+      if (this.select_month === 'January') {
+        return this.January.filter((sale) => sale.date.match(this.select_year));
+      } else if (this.select_month === 'February') {
+        return this.February.filter((sale) =>
+          sale.date.match(this.select_year)
+        );
+      } else if (this.select_month === 'March') {
+        return this.March.filter((sale) => sale.date.match(this.select_year));
+      } else if (this.select_month === 'April') {
+        return this.April.filter((sale) => sale.date.match(this.select_year));
+      } else if (this.select_month === 'May') {
+        return this.May.filter((sale) => sale.date.match(this.select_year));
+      } else if (this.select_month === 'June') {
+        return this.June.filter((sale) => sale.date.match(this.select_year));
+      } else if (this.select_month === 'July') {
+        return this.July.filter((sale) => sale.date.match(this.select_year));
+      } else if (this.select_month === 'August') {
+        return this.August.filter((sale) => sale.date.match(this.select_year));
+      } else if (this.select_month === 'September') {
+        return this.September.filter((sale) =>
+          sale.date.match(this.select_year)
+        );
+      } else if (this.select_month === 'October') {
+        return this.October.filter((sale) => sale.date.match(this.select_year));
+      } else if (this.select_month === 'November') {
+        return this.November.filter((sale) =>
+          sale.date.match(this.select_year)
+        );
+      } else {
+        return this.December.filter((sale) =>
+          sale.date.match(this.select_year)
+        );
+      }
+    } //end of selectedMonth()
+  }
+});
+
+Vue.component('tab-expenses', {
+  template: `
         <div class="row">
           <div class="col-lg-12">
             <h2>Expenses</h2>
@@ -1871,179 +1827,167 @@
             </div>
           </div>
         </div>`,
-      data() {
-        return {
-          search_value: '',
-          select_month: this.currentMonth(),
-          select_year: new Date().getFullYear(),
-          // add  form
-          add_form: {
-            id: '',
-            date: new Date().toISOString().substring(0, 10),
-            employee: 'station',
-            remarks: '',
-            amount: 0
-          }
-        };
-      },
-      computed: {
-        ...Vuex.mapState([
-          'selected_id',
-          'current_year',
-          'show_add_form',
-          'show_update_form',
-          'show_update_icon',
-          'show_delete_button'
-        ]),
-        ...Vuex.mapGetters('expensesModule', [
-          'January_',
-          'February_',
-          'March_',
-          'April_',
-          'May_',
-          'June_',
-          'July_',
-          'August_',
-          'September_',
-          'October_',
-          'November_',
-          'December_'
-        ])
-      },
-      methods: {
-        ...Vuex.mapActions([
-          'showAddForm',
-          'showUpdateForm',
-          'showUpdateIcon',
-          'showDeleteButton',
-          'cancelButton'
-        ]),
-
-        ...Vuex.mapActions('expensesModule', [
-          'addItemAction',
-          'updateItemAction',
-          'deleteItemAction'
-        ]),
-
-        // add section
-        addNewItem() {
-          this.addItemAction({
-            id: Math.random().toString(36).substring(2),
-            date: this.add_form.date,
-            employee: this.add_form.employee,
-            remarks: this.add_form.remarks,
-            amount: this.add_form.amount
-          });
-          this.add_form.id = ''
-          this.add_form.date = new Date().toISOString().substring(0, 10),
-          this.add_form.employee = 'station',
-          this.add_form.remarks = '',
-          this.add_form.amount = 0
-        },
-
-        // update section
-        updItem(selected_item) {
-          this.updateItemAction({
-            id: selected_item.id,
-            date: selected_item.date,
-            employee: selected_item.employee,
-            remarks: selected_item.remarks,
-            amount: selected_item.amount
-          });
-        },
-
-        currentMonth() {
-          const month = [
-            'January',
-            'February',
-            'March',
-            'April',
-            'May',
-            'June',
-            'July',
-            'August',
-            'September',
-            'October',
-            'November',
-            'December'
-          ];
-
-          const d = new Date();
-          let name = month[d.getMonth()];
-          return name;
-        },
-
-        searchItem() {
-          let findMatch = /([a-z])\w+/gi;
-          findMatch = this.search_value;
-          if (this.search_value != null) {
-            return this.expensesMonth()
-              .filter(
-                (item) =>
-                  item.date.match(findMatch) ||
-                  item.employee.match(findMatch) ||
-                  item.remarks.match(findMatch)
-              )
-              .filter((item) => item.date.match(this.select_year));
-          }
-        },
-
-        expensesMonth() {
-          if (this.select_month === 'January') {
-            return this.January_.filter((item) =>
-              item.date.match(this.select_year)
-            );
-          } else if (this.select_month === 'February') {
-            return this.February_.filter((item) =>
-              item.date.match(this.select_year)
-            );
-          } else if (this.select_month === 'March') {
-            return this.March_.filter((item) =>
-              item.date.match(this.select_year)
-            );
-          } else if (this.select_month === 'April') {
-            return this.April_.filter((item) =>
-              item.date.match(this.select_year)
-            );
-          } else if (this.select_month === 'May') {
-            return this.May_.filter((item) =>
-              item.date.match(this.select_year)
-            );
-          } else if (this.select_month === 'June') {
-            return this.June_.filter((item) =>
-              item.date.match(this.select_year)
-            );
-          } else if (this.select_month === 'July') {
-            return this.July_.filter((item) =>
-              item.date.match(this.select_year)
-            );
-          } else if (this.select_month === 'August') {
-            return this.August_.filter((item) =>
-              item.date.match(this.select_year)
-            );
-          } else if (this.select_month === 'September') {
-            return this.September_.filter((item) =>
-              item.date.match(this.select_year)
-            );
-          } else if (this.select_month === 'October') {
-            return this.October_.filter((item) =>
-              item.date.match(this.select_year)
-            );
-          } else if (this.select_month === 'November') {
-            return this.November_.filter((item) =>
-              item.date.match(this.select_year)
-            );
-          } else {
-            return this.December_.filter((item) =>
-              item.date.match(this.select_year)
-            );
-          }
-        }
+  data() {
+    return {
+      search_value: '',
+      select_month: this.currentMonth(),
+      select_year: new Date().getFullYear(),
+      // add  form
+      add_form: {
+        id: '',
+        date: new Date().toISOString().substring(0, 10),
+        employee: 'station',
+        remarks: '',
+        amount: 0
       }
-    });
+    };
+  },
+  computed: {
+    ...Vuex.mapState([
+      'selected_id',
+      'current_year',
+      'show_add_form',
+      'show_update_form',
+      'show_update_icon',
+      'show_delete_button'
+    ]),
+    ...Vuex.mapGetters('expensesModule', [
+      'January_',
+      'February_',
+      'March_',
+      'April_',
+      'May_',
+      'June_',
+      'July_',
+      'August_',
+      'September_',
+      'October_',
+      'November_',
+      'December_'
+    ])
+  },
+  methods: {
+    ...Vuex.mapActions([
+      'showAddForm',
+      'showUpdateForm',
+      'showUpdateIcon',
+      'showDeleteButton',
+      'cancelButton'
+    ]),
 
-    Vue.component('tab-financials', {
-      template: `
+    ...Vuex.mapActions('expensesModule', [
+      'addItemAction',
+      'updateItemAction',
+      'deleteItemAction'
+    ]),
+
+    // add section
+    addNewItem() {
+      this.addItemAction({
+        id: Math.random().toString(36).substring(2),
+        date: this.add_form.date,
+        employee: this.add_form.employee,
+        remarks: this.add_form.remarks,
+        amount: this.add_form.amount
+      });
+      this.add_form.id = '';
+      (this.add_form.date = new Date().toISOString().substring(0, 10)),
+        (this.add_form.employee = 'station'),
+        (this.add_form.remarks = ''),
+        (this.add_form.amount = 0);
+    },
+
+    // update section
+    updItem(selected_item) {
+      this.updateItemAction({
+        id: selected_item.id,
+        date: selected_item.date,
+        employee: selected_item.employee,
+        remarks: selected_item.remarks,
+        amount: selected_item.amount
+      });
+    },
+
+    currentMonth() {
+      const month = [
+        'January',
+        'February',
+        'March',
+        'April',
+        'May',
+        'June',
+        'July',
+        'August',
+        'September',
+        'October',
+        'November',
+        'December'
+      ];
+
+      const d = new Date();
+      let name = month[d.getMonth()];
+      return name;
+    },
+
+    searchItem() {
+      let findMatch = /([a-z])\w+/gi;
+      findMatch = this.search_value;
+      if (this.search_value != null) {
+        return this.expensesMonth()
+          .filter(
+            (item) =>
+              item.date.match(findMatch) ||
+              item.employee.match(findMatch) ||
+              item.remarks.match(findMatch)
+          )
+          .filter((item) => item.date.match(this.select_year));
+      }
+    },
+
+    expensesMonth() {
+      if (this.select_month === 'January') {
+        return this.January_.filter((item) =>
+          item.date.match(this.select_year)
+        );
+      } else if (this.select_month === 'February') {
+        return this.February_.filter((item) =>
+          item.date.match(this.select_year)
+        );
+      } else if (this.select_month === 'March') {
+        return this.March_.filter((item) => item.date.match(this.select_year));
+      } else if (this.select_month === 'April') {
+        return this.April_.filter((item) => item.date.match(this.select_year));
+      } else if (this.select_month === 'May') {
+        return this.May_.filter((item) => item.date.match(this.select_year));
+      } else if (this.select_month === 'June') {
+        return this.June_.filter((item) => item.date.match(this.select_year));
+      } else if (this.select_month === 'July') {
+        return this.July_.filter((item) => item.date.match(this.select_year));
+      } else if (this.select_month === 'August') {
+        return this.August_.filter((item) => item.date.match(this.select_year));
+      } else if (this.select_month === 'September') {
+        return this.September_.filter((item) =>
+          item.date.match(this.select_year)
+        );
+      } else if (this.select_month === 'October') {
+        return this.October_.filter((item) =>
+          item.date.match(this.select_year)
+        );
+      } else if (this.select_month === 'November') {
+        return this.November_.filter((item) =>
+          item.date.match(this.select_year)
+        );
+      } else {
+        return this.December_.filter((item) =>
+          item.date.match(this.select_year)
+        );
+      }
+    }
+  }
+});
+
+Vue.component('tab-financials', {
+  template: `
         <div>
           <!-- Main Content -->
           <div class="card-header">
@@ -4436,599 +4380,618 @@
               </div>
           </div>
         </div>`,
-      data() {
-        return {
-          select_month: this.currentMonth(),
-          select_year: new Date().getFullYear()
-        };
-      },
-      computed: {
-        ...Vuex.mapState('salesModule', ['sales']),
-        ...Vuex.mapState('expensesModule', ['items']),
-        ...Vuex.mapGetters('salesModule', [
-          'January',
-          'February',
-          'March',
-          'April',
-          'May',
-          'June',
-          'July',
-          'August',
-          'September',
-          'October',
-          'November',
-          'December'
-        ]),
-        ...Vuex.mapGetters('expensesModule', [
-          'January_',
-          'February_',
-          'March_',
-          'April_',
-          'May_',
-          'June_',
-          'July_',
-          'August_',
-          'September_',
-          'October_',
-          'November_',
-          'December_'
-        ])
-      },
-      methods: {
-        currentMonth() {
-          const month = [
-            'January',
-            'February',
-            'March',
-            'April',
-            'May',
-            'June',
-            'July',
-            'August',
-            'September',
-            'October',
-            'November',
-            'December'
-          ];
-
-          const d = new Date();
-          let name = month[d.getMonth()];
-          return name;
-        },
-        selectedMonth() {
-          if (this.select_month === 'January') {
-            return this.January.filter((sale) =>
-              sale.date.match(this.select_year)
-            );
-          } else if (this.select_month === 'February') {
-            return this.February.filter((sale) =>
-              sale.date.match(this.select_year)
-            );
-          } else if (this.select_month === 'March') {
-            return this.March.filter((sale) =>
-              sale.date.match(this.select_year)
-            );
-          } else if (this.select_month === 'April') {
-            return this.April.filter((sale) =>
-              sale.date.match(this.select_year)
-            );
-          } else if (this.select_month === 'May') {
-            return this.May.filter((sale) =>
-              sale.date.match(this.select_year)
-            );
-          } else if (this.select_month === 'June') {
-            return this.June.filter((sale) =>
-              sale.date.match(this.select_year)
-            );
-          } else if (this.select_month === 'July') {
-            return this.July.filter((sale) =>
-              sale.date.match(this.select_year)
-            );
-          } else if (this.select_month === 'August') {
-            return this.August.filter((sale) =>
-              sale.date.match(this.select_year)
-            );
-          } else if (this.select_month === 'September') {
-            return this.September.filter((sale) =>
-              sale.date.match(this.select_year)
-            );
-          } else if (this.select_month === 'October') {
-            return this.October.filter((sale) =>
-              sale.date.match(this.select_year)
-            );
-          } else if (this.select_month === 'November') {
-            return this.November.filter((sale) =>
-              sale.date.match(this.select_year)
-            );
-          } else {
-            return this.December.filter((sale) =>
-              sale.date.match(this.select_year)
-            );
-          }
-        },
-
-        expensesMonth() {
-          if (this.select_month === 'January') {
-            return this.January_.filter((item) =>
-              item.date.match(this.select_year)
-            );
-          } else if (this.select_month === 'February') {
-            return this.February_.filter((item) =>
-              item.date.match(this.select_year)
-            );
-          } else if (this.select_month === 'March') {
-            return this.March_.filter((item) =>
-              item.date.match(this.select_year)
-            );
-          } else if (this.select_month === 'April') {
-            return this.April_.filter((item) =>
-              item.date.match(this.select_year)
-            );
-          } else if (this.select_month === 'May') {
-            return this.May_.filter((item) =>
-              item.date.match(this.select_year)
-            );
-          } else if (this.select_month === 'June') {
-            return this.June_.filter((item) =>
-              item.date.match(this.select_year)
-            );
-          } else if (this.select_month === 'July') {
-            return this.July_.filter((item) =>
-              item.date.match(this.select_year)
-            );
-          } else if (this.select_month === 'August') {
-            return this.August_.filter((item) =>
-              item.date.match(this.select_year)
-            );
-          } else if (this.select_month === 'September') {
-            return this.September_.filter((item) =>
-              item.date.match(this.select_year)
-            );
-          } else if (this.select_month === 'October') {
-            return this.October_.filter((item) =>
-              item.date.match(this.select_year)
-            );
-          } else if (this.select_month === 'November') {
-            return this.November_.filter((item) =>
-              item.date.match(this.select_year)
-            );
-          } else {
-            return this.December_.filter((item) =>
-              item.date.match(this.select_year)
-            );
-          }
-        }
-      }
-    });
-
-    const customersModule = {
-      namespaced: true,
-      state: () => ({
-        customers: []
-      }),
-      getters: {
-        totalCustomerGetter: (state) => state.customers.length,
-        totalCustomerStationGetter: (state) =>
-          state.customers.filter((customer) => customer.seller === 'station')
-            .length,
-        totalCustomerSeller1Getter: (state) =>
-          state.customers.filter((customer) => customer.seller === 'seller1')
-            .length,
-        totalCustomerSeller2Getter: (state) =>
-          state.customers.filter((customer) => customer.seller === 'seller2')
-            .length
-      },
-      actions: {
-        addCustomerAction({ commit }, payload) {
-          commit('ADD_CUSTOMER', payload);
-        },
-        updateCustomerAction({ commit }, payload) {
-          commit('UPDATE_CUSTOMER', payload);
-        },
-        deleteCustomerAction({ commit }, payload) {
-          commit('DELETE_CUSTOMER', payload);
-        }
-      },
-      mutations: {
-        ADD_CUSTOMER: (state, payload) => {
-          state.customers.push(payload);
-          store.state.show_add_form = false;
-        },
-        UPDATE_CUSTOMER: (state, cust) => {
-          const index = state.customers.findIndex(
-            (customer) => customer.id === cust.id
-          );
-          if (index !== -1) {
-            state.customers.splice(index, 1, cust);
-          }
-          store.state.show_update_form = false;
-          store.state.selected_id = null;
-        },
-        DELETE_CUSTOMER: (state, payload) => {
-          const index = state.customers.findIndex(
-            (customer) => customer.id === payload.id
-          );
-          if (index !== -1) {
-            state.customers.splice(index, 1);
-          }
-          store.state.show_delete_button = false;
-          store.state.selected_id = null;
-        }
-      }
+  data() {
+    return {
+      select_month: this.currentMonth(),
+      select_year: new Date().getFullYear()
     };
+  },
+  computed: {
+    ...Vuex.mapState('salesModule', ['sales']),
+    ...Vuex.mapState('expensesModule', ['items']),
+    ...Vuex.mapGetters('salesModule', [
+      'January',
+      'February',
+      'March',
+      'April',
+      'May',
+      'June',
+      'July',
+      'August',
+      'September',
+      'October',
+      'November',
+      'December'
+    ]),
+    ...Vuex.mapGetters('expensesModule', [
+      'January_',
+      'February_',
+      'March_',
+      'April_',
+      'May_',
+      'June_',
+      'July_',
+      'August_',
+      'September_',
+      'October_',
+      'November_',
+      'December_'
+    ])
+  },
+  methods: {
+    currentMonth() {
+      const month = [
+        'January',
+        'February',
+        'March',
+        'April',
+        'May',
+        'June',
+        'July',
+        'August',
+        'September',
+        'October',
+        'November',
+        'December'
+      ];
 
-    const salesModule = {
-      namespaced: true,
-      state: () => ({
-        sales: []
-      }),
-      getters: {
-        // seller
-        station: (state) =>
-          state.sales.filter((sale) => sale.seller.match(/station/g)),
-        seller1: (state) =>
-          state.sales.filter((sale) => sale.seller.match(/seller1/g)),
-        seller2: (state) =>
-          state.sales.filter((sale) => sale.seller.match(/seller2/g)),
-
-        // monthly sales
-        January: (state) =>
-          state.sales.filter((sale) => sale.date.match(/20[0-9][0-9]-01/g)),
-        February: (state) =>
-          state.sales.filter((sale) => sale.date.match(/20[0-9][0-9]-02/g)),
-        March: (state) =>
-          state.sales.filter((sale) => sale.date.match(/20[0-9][0-9]-03/g)),
-        April: (state) =>
-          state.sales.filter((sale) => sale.date.match(/20[0-9][0-9]-04/g)),
-        May: (state) =>
-          state.sales.filter((sale) => sale.date.match(/20[0-9][0-9]-05/g)),
-        June: (state) =>
-          state.sales.filter((sale) => sale.date.match(/20[0-9][0-9]-06/g)),
-        July: (state) =>
-          state.sales.filter((sale) => sale.date.match(/20[0-9][0-9]-07/g)),
-        August: (state) =>
-          state.sales.filter((sale) => sale.date.match(/20[0-9][0-9]-08/g)),
-        September: (state) =>
-          state.sales.filter((sale) => sale.date.match(/20[0-9][0-9]-09/g)),
-        October: (state) =>
-          state.sales.filter((sale) => sale.date.match(/20[0-9][0-9]-10/g)),
-        November: (state) =>
-          state.sales.filter((sale) => sale.date.match(/20[0-9][0-9]-11/g)),
-        December: (state) =>
-          state.sales.filter((sale) => sale.date.match(/20[0-9][0-9]-12/g)),
-
-        // get the total number of items in current year
-        totalItemsGetter: (state) =>
-          state.sales
-            .filter((sale) => sale.date.match(new Date().getFullYear()))
-            .reduce((currentTotal, sale) => {
-              return sale.item + currentTotal;
-            }, 0),
-
-        // get the total payments for items in current year
-        totalPaymentsGetter: (state) =>
-          state.sales
-            .filter((sale) => sale.date.match(new Date().getFullYear()))
-            .reduce((currentTotal, sale) => {
-              return sale.payments + currentTotal;
-            }, 0),
-
-        // get the total items of station in current year
-        totalStationItems: (state) =>
-          state.sales
-            .filter(
-              (sale) =>
-                sale.seller.match(/station/g) &&
-                sale.date.match(new Date().getFullYear())
-            )
-            .reduce((currentTotal, sale) => {
-              return sale.item + currentTotal;
-            }, 0),
-
-        // get the total payments of station in current year
-        totalStationPayments: (state) =>
-          state.sales
-            .filter(
-              (sale) =>
-                sale.seller.match(/station/g) &&
-                sale.date.match(new Date().getFullYear())
-            )
-            .reduce((currentTotal, sale) => {
-              return sale.payments + currentTotal;
-            }, 0),
-
-        // get the total items  of seller1 in current year
-        totalSeller1Items: (state) =>
-          state.sales
-            .filter(
-              (sale) =>
-                sale.seller.match(/seller1/g) &&
-                sale.date.match(new Date().getFullYear())
-            )
-            .reduce((currentTotal, sale) => {
-              return sale.item + currentTotal;
-            }, 0),
-
-        // get the total payments of seller1 in current year
-        totalSeller1Payments: (state) =>
-          state.sales
-            .filter(
-              (sale) =>
-                sale.seller.match(/seller1/g) &&
-                sale.date.match(new Date().getFullYear())
-            )
-            .reduce((currentTotal, sale) => {
-              return sale.payments + currentTotal;
-            }, 0),
-
-        // get the total items of seller2 in current year
-        totalSeller2Items: (state) =>
-          state.sales
-            .filter(
-              (sale) =>
-                sale.seller.match(/seller2/g) &&
-                sale.date.match(new Date().getFullYear())
-            )
-            .reduce((currentTotal, sale) => {
-              return sale.item + currentTotal;
-            }, 0),
-
-        // get the total payments of seller2 in current year
-        totalSeller2Payments: (state) =>
-          state.sales
-            .filter(
-              (sale) =>
-                sale.seller.match(/seller2/g) &&
-                sale.date.match(new Date().getFullYear())
-            )
-            .reduce((currentTotal, sale) => {
-              return sale.payments + currentTotal;
-            }, 0)
-      },
-      actions: {
-        addSaleAction({ commit }, payload) {
-          commit('ADD_SALE', payload);
-        },
-
-        updateSaleAction({ commit }, payload) {
-          commit('UPDATE_SALE', payload);
-        },
-
-        deleteSaleAction({ commit }, payload) {
-          commit('DELETE_SALE', payload);
-        }
-      },
-      mutations: {
-        ADD_SALE: (state, payload) => {
-          state.sales.push(payload);
-          store.state.show_add_form = false;
-        },
-
-        UPDATE_SALE: (state, payload) => {
-          const index = state.sales.findIndex(
-            (sale) => sale.id === payload.id
-          );
-          if (index !== -1) {
-            state.sales.splice(index, 1, payload);
-          }
-          store.state.show_update_form = false;
-          store.state.selected_id = null;
-        },
-
-        DELETE_SALE: (state, payload) => {
-          const index = state.sales.findIndex(
-            (sale) => sale.id === payload.id
-          );
-          if (index !== -1) {
-            state.sales.splice(index, 1);
-          }
-          store.state.show_delete_button = false;
-          store.state.selected_id = null;
-        }
+      const d = new Date();
+      let name = month[d.getMonth()];
+      return name;
+    },
+    selectedMonth() {
+      if (this.select_month === 'January') {
+        return this.January.filter((sale) => sale.date.match(this.select_year));
+      } else if (this.select_month === 'February') {
+        return this.February.filter((sale) =>
+          sale.date.match(this.select_year)
+        );
+      } else if (this.select_month === 'March') {
+        return this.March.filter((sale) => sale.date.match(this.select_year));
+      } else if (this.select_month === 'April') {
+        return this.April.filter((sale) => sale.date.match(this.select_year));
+      } else if (this.select_month === 'May') {
+        return this.May.filter((sale) => sale.date.match(this.select_year));
+      } else if (this.select_month === 'June') {
+        return this.June.filter((sale) => sale.date.match(this.select_year));
+      } else if (this.select_month === 'July') {
+        return this.July.filter((sale) => sale.date.match(this.select_year));
+      } else if (this.select_month === 'August') {
+        return this.August.filter((sale) => sale.date.match(this.select_year));
+      } else if (this.select_month === 'September') {
+        return this.September.filter((sale) =>
+          sale.date.match(this.select_year)
+        );
+      } else if (this.select_month === 'October') {
+        return this.October.filter((sale) => sale.date.match(this.select_year));
+      } else if (this.select_month === 'November') {
+        return this.November.filter((sale) =>
+          sale.date.match(this.select_year)
+        );
+      } else {
+        return this.December.filter((sale) =>
+          sale.date.match(this.select_year)
+        );
       }
+    },
+
+    expensesMonth() {
+      if (this.select_month === 'January') {
+        return this.January_.filter((item) =>
+          item.date.match(this.select_year)
+        );
+      } else if (this.select_month === 'February') {
+        return this.February_.filter((item) =>
+          item.date.match(this.select_year)
+        );
+      } else if (this.select_month === 'March') {
+        return this.March_.filter((item) => item.date.match(this.select_year));
+      } else if (this.select_month === 'April') {
+        return this.April_.filter((item) => item.date.match(this.select_year));
+      } else if (this.select_month === 'May') {
+        return this.May_.filter((item) => item.date.match(this.select_year));
+      } else if (this.select_month === 'June') {
+        return this.June_.filter((item) => item.date.match(this.select_year));
+      } else if (this.select_month === 'July') {
+        return this.July_.filter((item) => item.date.match(this.select_year));
+      } else if (this.select_month === 'August') {
+        return this.August_.filter((item) => item.date.match(this.select_year));
+      } else if (this.select_month === 'September') {
+        return this.September_.filter((item) =>
+          item.date.match(this.select_year)
+        );
+      } else if (this.select_month === 'October') {
+        return this.October_.filter((item) =>
+          item.date.match(this.select_year)
+        );
+      } else if (this.select_month === 'November') {
+        return this.November_.filter((item) =>
+          item.date.match(this.select_year)
+        );
+      } else {
+        return this.December_.filter((item) =>
+          item.date.match(this.select_year)
+        );
+      }
+    }
+  }
+});
+
+const customersModule = {
+  namespaced: true,
+  state: () => ({
+    customers: [
+      {
+        id: 2,
+        user_id: 1,
+        name: 'B.Edil',
+        area: 'Dalahican',
+        seller: 'station',
+        contact: null,
+        remarks: null,
+        created_at: '2021-10-12 19:22:34',
+        updated_at: '2022-12-13 02:12:54'
+      },
+      {
+        id: 40,
+        user_id: 1,
+        name: 'B.Gerry',
+        area: 'Bantigue',
+        seller: 'station',
+        contact: null,
+        remarks: null,
+        created_at: '2021-10-12 19:47:45',
+        updated_at: '2022-07-14 17:10:19'
+      },
+      {
+        id: 92,
+        user_id: 1,
+        name: 'B. Jose Guevarra',
+        area: 'Cotta',
+        seller: 'station',
+        contact: null,
+        remarks: null,
+        created_at: '2022-10-31 17:25:23',
+        updated_at: '2022-10-31 17:25:23'
+      },
+      {
+        id: 98,
+        user_id: 1,
+        name: 'Sis MG Cabiltes',
+        area: 'Cotta',
+        seller: 'station',
+        contact: null,
+        remarks: null,
+        created_at: '2022-12-09 23:37:31',
+        updated_at: '2022-12-09 23:37:31'
+      },
+      {
+        id: 99,
+        user_id: 1,
+        name: 'Sis Rosalie',
+        area: 'Redv',
+        seller: 'station',
+        contact: null,
+        remarks: null,
+        created_at: '2022-12-09 23:38:02',
+        updated_at: '2022-12-09 23:38:02'
+      }
+    ]
+  }),
+  getters: {
+    totalCustomerGetter: (state) => state.customers.length,
+    totalCustomerStationGetter: (state) =>
+      state.customers.filter((customer) => customer.seller === 'station')
+        .length,
+    totalCustomerSeller1Getter: (state) =>
+      state.customers.filter((customer) => customer.seller === 'seller1')
+        .length,
+    totalCustomerSeller2Getter: (state) =>
+      state.customers.filter((customer) => customer.seller === 'seller2').length
+  },
+  actions: {
+    addCustomerAction({ commit }, payload) {
+      commit('ADD_CUSTOMER', payload);
+    },
+    updateCustomerAction({ commit }, payload) {
+      commit('UPDATE_CUSTOMER', payload);
+    },
+    deleteCustomerAction({ commit }, payload) {
+      commit('DELETE_CUSTOMER', payload);
+    }
+  },
+  mutations: {
+    ADD_CUSTOMER: (state, payload) => {
+      state.customers.push(payload);
+      store.state.show_add_form = false;
+    },
+    UPDATE_CUSTOMER: (state, cust) => {
+      const index = state.customers.findIndex(
+        (customer) => customer.id === cust.id
+      );
+      if (index !== -1) {
+        state.customers.splice(index, 1, cust);
+      }
+      store.state.show_update_form = false;
+      store.state.selected_id = null;
+    },
+    DELETE_CUSTOMER: (state, payload) => {
+      const index = state.customers.findIndex(
+        (customer) => customer.id === payload.id
+      );
+      if (index !== -1) {
+        state.customers.splice(index, 1);
+      }
+      store.state.show_delete_button = false;
+      store.state.selected_id = null;
+    }
+  }
+};
+
+const salesModule = {
+  namespaced: true,
+  state: () => ({
+    sales: []
+  }),
+  getters: {
+    // seller
+    station: (state) =>
+      state.sales.filter((sale) => sale.seller.match(/station/g)),
+    seller1: (state) =>
+      state.sales.filter((sale) => sale.seller.match(/seller1/g)),
+    seller2: (state) =>
+      state.sales.filter((sale) => sale.seller.match(/seller2/g)),
+
+    // monthly sales
+    January: (state) =>
+      state.sales.filter((sale) => sale.date.match(/20[0-9][0-9]-01/g)),
+    February: (state) =>
+      state.sales.filter((sale) => sale.date.match(/20[0-9][0-9]-02/g)),
+    March: (state) =>
+      state.sales.filter((sale) => sale.date.match(/20[0-9][0-9]-03/g)),
+    April: (state) =>
+      state.sales.filter((sale) => sale.date.match(/20[0-9][0-9]-04/g)),
+    May: (state) =>
+      state.sales.filter((sale) => sale.date.match(/20[0-9][0-9]-05/g)),
+    June: (state) =>
+      state.sales.filter((sale) => sale.date.match(/20[0-9][0-9]-06/g)),
+    July: (state) =>
+      state.sales.filter((sale) => sale.date.match(/20[0-9][0-9]-07/g)),
+    August: (state) =>
+      state.sales.filter((sale) => sale.date.match(/20[0-9][0-9]-08/g)),
+    September: (state) =>
+      state.sales.filter((sale) => sale.date.match(/20[0-9][0-9]-09/g)),
+    October: (state) =>
+      state.sales.filter((sale) => sale.date.match(/20[0-9][0-9]-10/g)),
+    November: (state) =>
+      state.sales.filter((sale) => sale.date.match(/20[0-9][0-9]-11/g)),
+    December: (state) =>
+      state.sales.filter((sale) => sale.date.match(/20[0-9][0-9]-12/g)),
+
+    // get the total number of items in current year
+    totalItemsGetter: (state) =>
+      state.sales
+        .filter((sale) => sale.date.match(new Date().getFullYear()))
+        .reduce((currentTotal, sale) => {
+          return sale.item + currentTotal;
+        }, 0),
+
+    // get the total payments for items in current year
+    totalPaymentsGetter: (state) =>
+      state.sales
+        .filter((sale) => sale.date.match(new Date().getFullYear()))
+        .reduce((currentTotal, sale) => {
+          return sale.payments + currentTotal;
+        }, 0),
+
+    // get the total items of station in current year
+    totalStationItems: (state) =>
+      state.sales
+        .filter(
+          (sale) =>
+            sale.seller.match(/station/g) &&
+            sale.date.match(new Date().getFullYear())
+        )
+        .reduce((currentTotal, sale) => {
+          return sale.item + currentTotal;
+        }, 0),
+
+    // get the total payments of station in current year
+    totalStationPayments: (state) =>
+      state.sales
+        .filter(
+          (sale) =>
+            sale.seller.match(/station/g) &&
+            sale.date.match(new Date().getFullYear())
+        )
+        .reduce((currentTotal, sale) => {
+          return sale.payments + currentTotal;
+        }, 0),
+
+    // get the total items  of seller1 in current year
+    totalSeller1Items: (state) =>
+      state.sales
+        .filter(
+          (sale) =>
+            sale.seller.match(/seller1/g) &&
+            sale.date.match(new Date().getFullYear())
+        )
+        .reduce((currentTotal, sale) => {
+          return sale.item + currentTotal;
+        }, 0),
+
+    // get the total payments of seller1 in current year
+    totalSeller1Payments: (state) =>
+      state.sales
+        .filter(
+          (sale) =>
+            sale.seller.match(/seller1/g) &&
+            sale.date.match(new Date().getFullYear())
+        )
+        .reduce((currentTotal, sale) => {
+          return sale.payments + currentTotal;
+        }, 0),
+
+    // get the total items of seller2 in current year
+    totalSeller2Items: (state) =>
+      state.sales
+        .filter(
+          (sale) =>
+            sale.seller.match(/seller2/g) &&
+            sale.date.match(new Date().getFullYear())
+        )
+        .reduce((currentTotal, sale) => {
+          return sale.item + currentTotal;
+        }, 0),
+
+    // get the total payments of seller2 in current year
+    totalSeller2Payments: (state) =>
+      state.sales
+        .filter(
+          (sale) =>
+            sale.seller.match(/seller2/g) &&
+            sale.date.match(new Date().getFullYear())
+        )
+        .reduce((currentTotal, sale) => {
+          return sale.payments + currentTotal;
+        }, 0)
+  },
+  actions: {
+    addSaleAction({ commit }, payload) {
+      commit('ADD_SALE', payload);
+    },
+
+    updateSaleAction({ commit }, payload) {
+      commit('UPDATE_SALE', payload);
+    },
+
+    deleteSaleAction({ commit }, payload) {
+      commit('DELETE_SALE', payload);
+    }
+  },
+  mutations: {
+    ADD_SALE: (state, payload) => {
+      state.sales.push(payload);
+      store.state.show_add_form = false;
+    },
+
+    UPDATE_SALE: (state, payload) => {
+      const index = state.sales.findIndex((sale) => sale.id === payload.id);
+      if (index !== -1) {
+        state.sales.splice(index, 1, payload);
+      }
+      store.state.show_update_form = false;
+      store.state.selected_id = null;
+    },
+
+    DELETE_SALE: (state, payload) => {
+      const index = state.sales.findIndex((sale) => sale.id === payload.id);
+      if (index !== -1) {
+        state.sales.splice(index, 1);
+      }
+      store.state.show_delete_button = false;
+      store.state.selected_id = null;
+    }
+  }
+};
+
+const expensesModule = {
+  namespaced: true,
+  state: () => ({
+    items: []
+  }),
+  getters: {
+    station: (state) =>
+      state.items.filter((item) => item.employee === 'station'),
+    seller1: (state) =>
+      state.items.filter((item) => item.employee === 'seller1'),
+    seller2: (state) =>
+      state.items.filter((item) => item.employee === 'seller2'),
+    // monthly
+    January_: (state) =>
+      state.items.filter((item) => item.date.match(/20[0-9][0-9]-01/g)),
+    February_: (state) =>
+      state.items.filter((item) => item.date.match(/20[0-9][0-9]-02/g)),
+    March_: (state) =>
+      state.items.filter((item) => item.date.match(/20[0-9][0-9]-03/g)),
+    April_: (state) =>
+      state.items.filter((item) => item.date.match(/20[0-9][0-9]-04/g)),
+    May_: (state) =>
+      state.items.filter((item) => item.date.match(/20[0-9][0-9]-05/g)),
+    June_: (state) =>
+      state.items.filter((item) => item.date.match(/20[0-9][0-9]-06/g)),
+    July_: (state) =>
+      state.items.filter((item) => item.date.match(/20[0-9][0-9]-07/g)),
+    August_: (state) =>
+      state.items.filter((item) => item.date.match(/20[0-9][0-9]-08/g)),
+    September_: (state) =>
+      state.items.filter((item) => item.date.match(/20[0-9][0-9]-09/g)),
+    October_: (state) =>
+      state.items.filter((item) => item.date.match(/20[0-9][0-9]-10/g)),
+    November_: (state) =>
+      state.items.filter((item) => item.date.match(/20[0-9][0-9]-11/g)),
+    December_: (state) =>
+      state.items.filter((item) => item.date.match(/20[0-9][0-9]-12/g)),
+
+    totalExpensesGetter: (state) =>
+      state.items
+        .filter((item) => item.date.match(new Date().getFullYear()))
+        .reduce((currentTotal, item) => {
+          return item.amount + currentTotal;
+        }, 0),
+
+    totalStationExpensesGetter: (state, getters) => {
+      return getters.station
+        .filter((item) => item.date.match(new Date().getFullYear()))
+        .reduce((currentTotal, item) => {
+          return item.amount + currentTotal;
+        }, 0);
+    },
+
+    totalSeller1ExpensesGetter: (state, getters) => {
+      return getters.seller1
+        .filter((item) => item.date.match(new Date().getFullYear()))
+        .reduce((currentTotal, item) => {
+          return item.amount + currentTotal;
+        }, 0);
+    },
+
+    totalSeller2ExpensesGetter: (state, getters) => {
+      return getters.seller2
+        .filter((item) => item.date.match(new Date().getFullYear()))
+        .reduce((currentTotal, item) => {
+          return item.amount + currentTotal;
+        }, 0);
+    }
+  },
+  actions: {
+    addItemAction({ commit }, payload) {
+      commit('ADD_ITEM', payload);
+    },
+
+    updateItemAction({ commit }, payload) {
+      commit('UPDATE_ITEM', payload);
+    },
+
+    deleteItemAction({ commit }, payload) {
+      commit('DELETE_ITEM', payload);
+    }
+  },
+  mutations: {
+    ADD_ITEM: (state, payload) => {
+      state.items.push(payload);
+      store.state.show_add_form = false;
+    },
+
+    UPDATE_ITEM: (state, payload) => {
+      const index = state.items.findIndex((item) => item.id === payload.id);
+      if (index !== -1) {
+        state.items.splice(index, 1, payload);
+      }
+      store.state.show_update_form = false;
+      store.state.selected_id = null;
+    },
+
+    DELETE_ITEM: (state, payload) => {
+      const index = state.items.findIndex((item) => item.id === payload.id);
+      if (index !== -1) {
+        state.items.splice(index, 1);
+      }
+      store.state.show_delete_button = false;
+      store.state.selected_id = null;
+    }
+  }
+};
+
+var store = new Vuex.Store({
+  state: {
+    selected_id: null,
+    select_year: new Date().getFullYear(),
+    current_year: new Date().getFullYear(),
+    show_add_form: false,
+    show_update_form: false,
+    show_update_icon: false,
+    show_delete_button: false
+  },
+  getters: {},
+  actions: {
+    showAddForm({ commit }) {
+      commit('SHOW_ADD_FORM');
+    },
+
+    showUpdateForm({ commit }, id) {
+      commit('SHOW_UPDATE_FORM', id);
+    },
+
+    showUpdateIcon({ commit }) {
+      commit('SHOW_UPDATE_ICON');
+    },
+
+    showDeleteButton({ commit }) {
+      commit('SHOW_DELETE_BUTTON');
+    },
+
+    cancelButton({ commit }) {
+      commit('HIDE_FORM');
+    }
+  },
+  mutations: {
+    SHOW_ADD_FORM: (state) => {
+      state.show_add_form = true;
+      state.show_update_form = false;
+      state.show_update_icon = false;
+      state.show_delete_button = false;
+      state.selected_id = null;
+    },
+    SHOW_UPDATE_FORM: (state, id) => {
+      state.show_add_form = false;
+      state.show_update_form = true;
+      state.show_update_icon = false;
+      state.show_delete_button = false;
+      state.selected_id = id;
+    },
+    SHOW_UPDATE_ICON: (state) => {
+      state.show_add_form = false;
+      state.show_update_form = false;
+      state.show_update_icon = true;
+      state.show_delete_button = false;
+      state.selected_id = null;
+    },
+    SHOW_DELETE_BUTTON: (state) => {
+      state.show_add_form = false;
+      state.show_update_form = false;
+      state.show_update_icon = false;
+      state.show_delete_button = true;
+      state.selected_id = null;
+    },
+    HIDE_FORM: (state) => {
+      state.show_add_form = false;
+      state.show_update_form = false;
+      state.show_update_icon = false;
+      state.show_delete_button = false;
+      state.selected_id = null;
+    }
+  },
+  modules: {
+    customersModule,
+    salesModule,
+    expensesModule
+  }
+});
+
+var app = new Vue({
+  el: '#app',
+  store,
+
+  data() {
+    return {
+      currentTab: 'Home',
+      tabs: ['Home', 'Customers', 'Sales', 'Expenses', 'Financials']
     };
-
-    const expensesModule = {
-      namespaced: true,
-      state: () => ({
-        items: []
-      }),
-      getters: {
-        station: (state) =>
-          state.items.filter((item) => item.employee === 'station'),
-        seller1: (state) =>
-          state.items.filter((item) => item.employee === 'seller1'),
-        seller2: (state) =>
-          state.items.filter((item) => item.employee === 'seller2'),
-        // monthly
-        January_: (state) =>
-          state.items.filter((item) => item.date.match(/20[0-9][0-9]-01/g)),
-        February_: (state) =>
-          state.items.filter((item) => item.date.match(/20[0-9][0-9]-02/g)),
-        March_: (state) =>
-          state.items.filter((item) => item.date.match(/20[0-9][0-9]-03/g)),
-        April_: (state) =>
-          state.items.filter((item) => item.date.match(/20[0-9][0-9]-04/g)),
-        May_: (state) =>
-          state.items.filter((item) => item.date.match(/20[0-9][0-9]-05/g)),
-        June_: (state) =>
-          state.items.filter((item) => item.date.match(/20[0-9][0-9]-06/g)),
-        July_: (state) =>
-          state.items.filter((item) => item.date.match(/20[0-9][0-9]-07/g)),
-        August_: (state) =>
-          state.items.filter((item) => item.date.match(/20[0-9][0-9]-08/g)),
-        September_: (state) =>
-          state.items.filter((item) => item.date.match(/20[0-9][0-9]-09/g)),
-        October_: (state) =>
-          state.items.filter((item) => item.date.match(/20[0-9][0-9]-10/g)),
-        November_: (state) =>
-          state.items.filter((item) => item.date.match(/20[0-9][0-9]-11/g)),
-        December_: (state) =>
-          state.items.filter((item) => item.date.match(/20[0-9][0-9]-12/g)),
-
-        totalExpensesGetter: (state) =>
-          state.items
-            .filter((item) => item.date.match(new Date().getFullYear()))
-            .reduce((currentTotal, item) => {
-              return item.amount + currentTotal;
-            }, 0),
-
-        totalStationExpensesGetter: (state, getters) => {
-          return getters.station
-            .filter((item) => item.date.match(new Date().getFullYear()))
-            .reduce((currentTotal, item) => {
-              return item.amount + currentTotal;
-            }, 0);
-        },
-
-        totalSeller1ExpensesGetter: (state, getters) => {
-          return getters.seller1
-            .filter((item) => item.date.match(new Date().getFullYear()))
-            .reduce((currentTotal, item) => {
-              return item.amount + currentTotal;
-            }, 0);
-        },
-
-        totalSeller2ExpensesGetter: (state, getters) => {
-          return getters.seller2
-            .filter((item) => item.date.match(new Date().getFullYear()))
-            .reduce((currentTotal, item) => {
-              return item.amount + currentTotal;
-            }, 0);
-        }
-      },
-      actions: {
-        addItemAction({ commit }, payload) {
-          commit('ADD_ITEM', payload);
-        },
-
-        updateItemAction({ commit }, payload) {
-          commit('UPDATE_ITEM', payload);
-        },
-
-        deleteItemAction({ commit }, payload) {
-          commit('DELETE_ITEM', payload);
-        }
-      },
-      mutations: {
-        ADD_ITEM: (state, payload) => {
-          state.items.push(payload);
-          store.state.show_add_form = false;
-        },
-
-        UPDATE_ITEM: (state, payload) => {
-          const index = state.items.findIndex(
-            (item) => item.id === payload.id
-          );
-          if (index !== -1) {
-            state.items.splice(index, 1, payload);
-          }
-          store.state.show_update_form = false;
-          store.state.selected_id = null;
-        },
-
-        DELETE_ITEM: (state, payload) => {
-          const index = state.items.findIndex(
-            (item) => item.id === payload.id
-          );
-          if (index !== -1) {
-            state.items.splice(index, 1);
-          }
-          store.state.show_delete_button = false;
-          store.state.selected_id = null;
-        }
-      }
-    };
-
-    var store = new Vuex.Store({
-      state: {
-        selected_id: null,
-        select_year: new Date().getFullYear(),
-        current_year: new Date().getFullYear(),
-        show_add_form: false,
-        show_update_form: false,
-        show_update_icon: false,
-        show_delete_button: false
-      },
-      getters: {},
-      actions: {
-        showAddForm({ commit }) {
-          commit('SHOW_ADD_FORM');
-        },
-
-        showUpdateForm({ commit }, id) {
-          commit('SHOW_UPDATE_FORM', id);
-        },
-
-        showUpdateIcon({ commit }) {
-          commit('SHOW_UPDATE_ICON');
-        },
-
-        showDeleteButton({ commit }) {
-          commit('SHOW_DELETE_BUTTON');
-        },
-
-        cancelButton({ commit }) {
-          commit('HIDE_FORM');
-        }
-      },
-      mutations: {
-        SHOW_ADD_FORM: (state) => {
-          state.show_add_form = true;
-          state.show_update_form = false;
-          state.show_update_icon = false;
-          state.show_delete_button = false;
-          state.selected_id = null;
-        },
-        SHOW_UPDATE_FORM: (state, id) => {
-          state.show_add_form = false;
-          state.show_update_form = true;
-          state.show_update_icon = false;
-          state.show_delete_button = false;
-          state.selected_id = id;
-        },
-        SHOW_UPDATE_ICON: (state) => {
-          state.show_add_form = false;
-          state.show_update_form = false;
-          state.show_update_icon = true;
-          state.show_delete_button = false;
-          state.selected_id = null;
-        },
-        SHOW_DELETE_BUTTON: (state) => {
-          state.show_add_form = false;
-          state.show_update_form = false;
-          state.show_update_icon = false;
-          state.show_delete_button = true;
-          state.selected_id = null;
-        },
-        HIDE_FORM: (state) => {
-          state.show_add_form = false;
-          state.show_update_form = false;
-          state.show_update_icon = false;
-          state.show_delete_button = false;
-          state.selected_id = null;
-        }
-      },
-      modules: {
-        customersModule,
-        salesModule,
-        expensesModule
-      }
-    });
-
-    var app = new Vue({
-      el: '#app',
-      store,
-
-      data() {
-        return {
-          currentTab: 'Home',
-          tabs: ['Home', 'Customers', 'Sales', 'Expenses', 'Financials']
-        };
-      },
-      computed: {
-        currentTabComponent: function () {
-          return 'tab-' + this.currentTab.toLowerCase();
-        }
-      },
-    });
+  },
+  computed: {
+    currentTabComponent: function () {
+      return 'tab-' + this.currentTab.toLowerCase();
+    }
+  }
+});
