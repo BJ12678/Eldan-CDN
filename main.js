@@ -1248,6 +1248,7 @@
           search_value: '',
           // add customer form
           add_form: {
+            id: '',
             name: '',
             area: '',
             seller: 'station',
@@ -1282,7 +1283,20 @@
 
         // add customer section
         addNewCust() {
-          this.addCustomerAction(this.add_form);
+          this.addCustomerAction({
+            id: Math.random().toString(36).substring(2),
+            name: this.add_form.name,
+            area: this.add_form.area,
+            seller: this.add_form.seller,
+            contact: this.add_form.contact,
+            remarks: this.add_form.remarks
+          });
+          this.add_form.id= '',
+          this.add_form.name= '',
+          this.add_form.area= '',
+          this.add_form.seller= 'station',
+          this.add_form.contact= '',
+          this.add_form.remarks= ''
         },
 
         // update customer section
@@ -4585,19 +4599,16 @@
             .then((res) => commit('GET_CUSTOMERS', res.data));
         },
         addCustomerAction({ commit }, payload) {
-          customerApi
-            .addCust(payload)
-            .then(commit('ADD_CUSTOMER', payload));
+          customerApi.addCust(payload)
+          commit('ADD_CUSTOMER', payload);
         },
         updateCustomerAction({ commit }, payload) {
-          customerApi
-            .updateCust(payload)
-            .then((res) => commit('UPDATE_CUSTOMER', res.data));
+          customerApi.updateCust(payload)
+          commit('UPDATE_CUSTOMER', payload);
         },
         deleteCustomerAction({ commit }, payload) {
-          customerApi
-            .deleteCust(payload)
-            .then((res) => commit('DELETE_CUSTOMER', res.data));
+          customerApi.deleteCust(payload)
+          commit('DELETE_CUSTOMER', payload);
         }
       },
       mutations: {
@@ -4606,6 +4617,7 @@
         },
         ADD_CUSTOMER: (state, payload) => {
           state.customers.push(payload);
+          store.state.show_add_form = false;
         },
         UPDATE_CUSTOMER: (state, cust) => {
           const index = state.customers.findIndex(
