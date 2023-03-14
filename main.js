@@ -1529,7 +1529,8 @@
           select_month: this.currentMonth(),
           select_year: new Date().getFullYear(),
           add_form: {
-            date: new Date().toISOString().substr(0, 10),
+            id: '',
+            date: new Date().toISOString().substring(0, 10),
             customer: '',
             seller: 'station',
             item: 0,
@@ -1578,7 +1579,22 @@
         ]),
         // add section
         addNewSale() {
-          this.addSaleAction(this.add_form);
+          this.addSaleAction({
+            id: Math.random().toString(36).substring(2),
+            date:this.add_form.date,
+            customer:this.add_form.customer,
+            seller:this.add_form.seller,
+            item:this.add_form.item,
+            payments:this.add_form.payments,
+            remarks:this.add_form.remarks
+          });
+          this.add_form.id = '',
+          this.add_form.date = new Date().toISOString().substring(0, 10),
+          this.add_form.customer = '',
+          this.add_form.seller = 'station',
+          this.add_form.item = 0,
+          this.add_form.payments = 0,
+          this.add_form.remarks = ''
         },
 
         // update section
@@ -4776,21 +4792,18 @@
         },
 
         addSaleAction({ commit }, payload) {
-          saleApi
-            .addSale(payload)
-            .then((res) => commit('ADD_SALE', res.data));
+          saleApi.addSale(payload)
+          commit('ADD_SALE', payload);
         },
 
         updateSaleAction({ commit }, payload) {
-          saleApi
-            .updateSale(payload)
-            .then((res) => commit('UPDATE_SALE', res.data));
+          saleApi.updateSale(payload)
+          commit('UPDATE_SALE', payload);
         },
 
         deleteSaleAction({ commit }, payload) {
-          saleApi
-            .deleteSale(payload)
-            .then((res) => commit('DELETE_SALE', res.data));
+          saleApi.deleteSale(payload)
+          commit('DELETE_SALE', payload);
         }
       },
       mutations: {
@@ -5014,7 +5027,7 @@
           }
         });
       } // delete customer
-    }; // export
+    };
 
     const saleApi = {
       fetchSales() {
@@ -5070,7 +5083,7 @@
           }
         });
       } // delete sale
-    }; // export
+    };
 
     const expensesApi = {
       fetchMaintenance() {
@@ -5122,7 +5135,7 @@
           }
         });
       } // delete selected item
-    }; // export
+    };
 
     var store = new Vuex.Store({
       state: {
