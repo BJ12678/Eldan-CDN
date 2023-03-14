@@ -4962,7 +4962,7 @@
         'Content-Type': 'application/json'
       }
     }); */
-    const customerApi = {
+    /* const customerApi = {
       fetchCust() {
         return HTTP.get(`/customers`, {
           headers: {
@@ -5014,9 +5014,9 @@
           }
         });
       } // delete customer
-    }; // export
+    };  */// export
 
-    const saleApi = {
+    /* const saleApi = {
       fetchSales() {
         return HTTP.get(`/sales`, {
           headers: {
@@ -5070,9 +5070,9 @@
           }
         });
       } // delete sale
-    }; // export
+    };  */// export
 
-    const expensesApi = {
+   /*  const expensesApi = {
       fetchMaintenance() {
         return HTTP.get(`/maintenance`, {
           headers: {
@@ -5122,7 +5122,7 @@
           }
         });
       } // delete selected item
-    }; // export
+    };  */// export
 
     var store = new Vuex.Store({
       state: {
