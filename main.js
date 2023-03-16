@@ -928,8 +928,10 @@ Vue.component('tab-home', {
         `,
   data() {
     return {
-      select_month: this.currentMonth(),
-      select_year: new Date().getFullYear()
+      select_month: 'March',
+      select_year: 2021
+      /* select_month: this.currentMonth(),
+      select_year: new Date().getFullYear() */
     };
   },
   computed: {
@@ -4382,8 +4384,8 @@ Vue.component('tab-financials', {
         </div>`,
   data() {
     return {
-      select_month: this.currentMonth(),
-      select_year: new Date().getFullYear()
+      select_year: 2021
+      // select_year: new Date().getFullYear() 
     };
   },
   computed: {
